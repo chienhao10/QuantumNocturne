@@ -108,7 +108,7 @@ namespace QuantumNocturne
             AutoLevelerMenu.AddItem(new MenuItem("AutoLvlStartFrom", "AutoLeveler Start from Level: ").SetValue(new Slider(2, 6, 1)));
 
             Menu SkinMenu = Menu.AddSubMenu(new Menu("Skins Menu", "SkinMenu"));
-            SkinMenu.AddItem(new MenuItem("SkinID", "Skin ID")).SetValue(new Slider(8, 0, 8));
+            SkinMenu.AddItem(new MenuItem("SkinID", "Skin ID")).SetValue(new Slider(5, 0, 7));
             var UseSkin = SkinMenu.AddItem(new MenuItem("UseSkin", "Enabled")).SetValue(true);
             UseSkin.ValueChanged += (sender, eventArgs) =>
             {
@@ -139,7 +139,10 @@ namespace QuantumNocturne
                 FontStyle.Bold, SharpDX.Color.Orange);
             CreditMenu.AddItem(new MenuItem("imop", "Be Sugoi").SetValue(false)).SetFontStyle(
                 FontStyle.Bold, SharpDX.Color.Green);
-
+            if (Menu.Item("imop").GetValue<bool>())
+            {
+                new SoundObject(Resources.OnLoad).Play();
+            }
             Menu.AddToMainMenu();
             #endregion
 
@@ -261,6 +264,7 @@ namespace QuantumNocturne
             if (Menu.Item("DR").GetValue<bool>() && R.IsReady())
             {
                 Render.Circle.DrawCircle(Player.Position, R.Range, Color.Red, 45, true);
+                Drawing.WorldToMinimap(Player.Position).To3D2();
             }
             else
             {
@@ -279,10 +283,6 @@ namespace QuantumNocturne
             if (Menu.Item("UseSkin").GetValue<bool>())
             {
                 Player.SetSkin(Player.CharData.BaseSkinName, Menu.Item("SkinID").GetValue<Slider>().Value);
-            }
-            if (Menu.Item("imop").GetValue<bool>())
-            {
-                new SoundObject(Resources.power).Play();
             }
             switch (Orbwalker.ActiveMode)
             {

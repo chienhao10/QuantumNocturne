@@ -63,9 +63,9 @@ namespace QuantumNocturne.Properties {
         /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream power {
+        internal static System.IO.UnmanagedMemoryStream OnLoad {
             get {
-                return ResourceManager.GetStream("Power", resourceCulture);
+                return ResourceManager.GetStream("OnLoad", resourceCulture);
             }
         }
     }

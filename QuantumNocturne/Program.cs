@@ -9,7 +9,7 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using LeagueSharp.Data;
 using SharpDX;
-using QuantumNocturne.Ebody467;
+using QuantumNocturne.Properties;
 using SebbyLib;
 using Color = System.Drawing.Color;
 using System.Drawing;
@@ -280,9 +280,9 @@ namespace QuantumNocturne
             {
                 Player.SetSkin(Player.CharData.BaseSkinName, Menu.Item("SkinID").GetValue<Slider>().Value);
             }
-            if (Menu.Item("imop").IsActive())
+            if (Menu.Item("imop").GetValue<bool>())
             {
-                new SoundObject(Resources.OnLoad).Play();
+                new SoundObject(Resources.power).Play();
             }
             switch (Orbwalker.ActiveMode)
             {
